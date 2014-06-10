@@ -17,8 +17,8 @@ listOrd [] = True
 listOrd [x] = True
 listOrd ( x : y : xs ) = ( x <= y ) && listOrd ( y : xs )
 
-treeOrd :: (Ord a) =>BinTree a -> Bool
-treeOrd ( Node i x d ) = listOrd ( treeToList ( Node i x d ))
+isABB :: (Ord a) =>BinTree a -> Bool
+isABB ( Node i x d ) = listOrd ( treeToList ( Node i x d ))
 -------------------------------------------------
 
 ----- RETRUN THE LESS ELEMENT OF THE TREE -------
@@ -36,20 +36,13 @@ listToTree (x:xs) = insABB x (listToTree xs)
 
 
 ----- INSERT AN ELEMENT IN THE TREE -------------
-insABB::(Ord a) => a -> BinTree a -> BinTree a
-insABB x Null             = (Node Null x Null)
-insABB x (Node hi y hd) | x==y = (Node hi y hd)
-                        | x<y  = insABB x hi
-                        | x>y  = insABB x hd
+insABB :: (Ord a) => a -> BinTree a -> BinTree a
+insABB x Null = (Node Null x Null)
+insABB x (Node i r d) | x <= r = (Node (insABB x i) r d)
+					  | otherwise = (Node i r (insABB x d))
 
 -------------------------------------------------
 
+getMin :: (Ord a) => BinTree a -> (a, BinTree a) -- a = elemento mas chico y bintree a = arbol sin el elemento menor
+getMin (Node i r d) = treeToList(Node i r d)
 
-
-{-nse :: (Ord a) => a -> BinTree a -> BinTree a
-inse x Null = (Node Null x Null)
---inse x (Node i r d ) = (Node i r (Node Null x Null)) 
-inse x (Node i r d ) = inse x d
--}
-
---getMin :: (Ord a) => BinTree a -> (a, BinTree a) -- a = elemento mas chico y bintree a = arbol sin el elemento menor
