@@ -35,7 +35,7 @@ listToTree (x:xs) = insABB x (listToTree xs)
 -------------------------------------------------
 
 
------ INSERT AN ELEMENT IN THE TREE -------------
+----- INSERT AN ELEMENT IN THE TREE --------------
 insABB :: (Ord a) => a -> BinTree a -> BinTree a
 insABB x Null = (Node Null x Null)
 insABB x (Node i r d) | x <= r = (Node (insABB x i) r d)
