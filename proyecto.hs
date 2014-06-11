@@ -19,7 +19,7 @@ listOrd ( x : y : xs ) = ( x <= y ) && listOrd ( y : xs )
 
 isABB :: (Ord a) =>BinTree a -> Bool
 isABB ( Node i x d ) = listOrd ( treeToList ( Node i x d ))
--------------------------------------------------
+--------------------------------------------------
 
 ----- RETRUN THE LESS ELEMENT OF THE TREE -------
 firstEle :: [a] -> (a,[a])
