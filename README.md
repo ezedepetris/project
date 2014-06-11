@@ -1,3 +1,10 @@
+TODO
+====
+
+* Clean up the main.hs and put all stuff in BenTree.hs file
+* Create others module if it necessary
+
+
 project haskell programacion avanzada 2014
 =====
 
