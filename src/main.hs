@@ -1,3 +1,4 @@
+-- import BinTree
 import System.Random
 
 rList n = take n $! (randoms (mkStdGen (0)))::[Integer]
@@ -12,7 +13,7 @@ raiz ( Node _ r _) = r
 ------------- CONVERT THE TREE AT LIST ---------
 treeToList :: (Ord a) => BinTree a -> [a]
 treeToList Null = []
-treeToList ( Node i r d ) =  treeToList ( i ) ++ [r] ++ treeToList ( d ) 
+treeToList ( Node i r d ) =  treeToList ( i ) ++ [r] ++ treeToList ( d )
 ------------------------------------------------
 
 ------ VERIFY IF THE TREE IS IN ORDEN OR NOT----
@@ -44,8 +45,8 @@ takeFirst :: (Ord a) => [a] -> ( a , BinTree a)
 takeFirst [x] = ( x , Null )
 takeFirst (x:xs) = ( x , listToTree xs )
 
-getMin :: ( Ord  a )  =>  BinTree  a  ->  ( a ,  BinTree  a ) 
-getMin ( Node Null x Null ) = ( x , Null) 
+getMin :: ( Ord  a )  =>  BinTree  a  ->  ( a ,  BinTree  a )
+getMin ( Node Null x Null ) = ( x , Null)
 getMin ( Node  i  r  d )  =  takeFirst ( treeToList ( Node  i  r  d ))
 
 ---------------------------------------------------
@@ -59,7 +60,7 @@ abbSort (x:xs) = treeToList( listToTree(x:xs) )
 ---------------- SELECT SORT ----------------------
 selSort :: (Ord a) => [a] -> [a]
 selSort [] = []
-selSort xs = let x = minimum xs in x : selSort (remove x xs) 
+selSort xs = let x = minimum xs in x : selSort (remove x xs)
   where remove _ [] = []
         remove a (x:xs)
           | x == a = xs
