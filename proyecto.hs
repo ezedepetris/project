@@ -43,6 +43,13 @@ insABB x (Node i r d) | x <= r = (Node (insABB x i) r d)
 
 -------------------------------------------------
 
-getMin :: (Ord a) => BinTree a -> (a, BinTree a) -- a = elemento mas chico y bintree a = arbol sin el elemento menor
-getMin (Node i r d) = treeToList(Node i r d)
+--GET THE MINIMAL ELEMENT AND THE REST OF THE LIST--
+takeFirst :: [a] -> ( a , [a])
+takeFirst [x] = ( x , [] )
+takeFirst (x:xs) = ( x , xs )
 
+getMin :: ( Ord  a )  =>  BinTree  a  ->  ( a ,  BinTree  a ) 
+getMin ( Node Null x Null ) = ( x , Null) 
+getMin ( Node  i  r  d )  =  ( takeFirst.0 ( treeToList ( Node  i  r  d )) , listToTree (takeFirst.1 ( treeToList ( Node  i  r  d ))))
+
+---------------------------------------------------
